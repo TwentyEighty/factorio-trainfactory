@@ -11,9 +11,8 @@ data:extend {
             energy_required = 30,
             ingredients =
             {
-                { "fast-inserter", 10 },
-                { "assembling-machine-1", 1 },
-                { "rail", 50 },
+                { "assembling-machine-1", 5 },
+                { "rail", 10 },
                 { "electronic-circuit", 10 }
             },
             results =
@@ -35,9 +34,8 @@ data:extend {
             energy_required = 30,
             ingredients =
             {
-                { "fast-inserter", 10 },
-                { "assembling-machine-1", 1 },
-                { "rail", 50 },
+                { "assembling-machine-1", 5 },
+                { "rail", 10 },
                 { "electronic-circuit", 10 }
             },
             results =
@@ -60,9 +58,8 @@ data:extend {
             energy_required = 30,
             ingredients =
             {
-                { "fast-inserter", 10 },
-                { "assembling-machine-1", 1 },
-                { "rail", 50 },
+                { "assembling-machine-1", 5 },
+                { "rail", 10 },
                 { "electronic-circuit", 10 }
             },
             results =
@@ -84,9 +81,8 @@ data:extend {
             energy_required = 30,
             ingredients =
             {
-                { "fast-inserter", 10 },
-                { "assembling-machine-1", 1 },
-                { "rail", 50 },
+                { "assembling-machine-1", 5 },
+                { "rail", 10 },
                 { "electronic-circuit", 10 }
             },
             results =
