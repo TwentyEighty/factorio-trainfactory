@@ -4,8 +4,8 @@
   "factorio_version": "1.1",
   "title": "TrainFactory",
   "author": "TwentyEighty",
-  "contact": "",
-  "homepage": "",
+  "contact": "TwentyEighty#3487",
+  "homepage": "https://github.com/TwentyEighty/factorio-trainfactory",
   "description": "Automate train production PRE-ALPHA",
   "dependencies": [
     "base",
