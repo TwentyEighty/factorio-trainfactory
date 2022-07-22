@@ -1,18 +1,32 @@
 local constants = require('constants')
+local util = require('util')
 local flib_table = require('__flib__.table')
 
 local global_data = {}
 
 function global_data.on_init()
+    if global.version == 1 then
+        -- v1 machines will need to be recreated
+        game.print("Breaking update. TrainFactory buildings will need to be recreated.")
+        global_data.clear()
+    end
+
     if not global.version then
-        global.version = 1
+        global.version = 2
         global.players = {}
-        global.machines = {}
-        global.groups = {}
+        global.machines = {
+            assemble = {},
+            disassemble = {},
+        }
+        global.groups = {
+            assemble = {},
+            disassemble = {},
+        }
+        global.buckets = {}
         global.group_index = 1
     end
 
-    for _,player in pairs(game.players) do
+    for _, player in pairs(game.players) do
         global_data.init_player_data(player.index)
     end
 end
@@ -24,168 +38,194 @@ function global_data.init_player_data(player_index)
 end
 
 function global_data.clear()
-    for _,key in pairs(global) do
+    for key, _ in pairs(global) do
         global[key] = nil
     end
+end
+
+local function add_to_bucket(group)
+    local min_index = 0
+    local min_count = 1000000
+    for i = 1, constants.num_buckets do
+        local bucket = global.buckets[i]
+        if not bucket then
+            global.buckets[i] = {}
+            bucket = global.buckets[i]
+        end
+
+        local size = flib_table.size(bucket)
+        if flib_table.size(bucket) < min_count then
+            min_index = i
+            min_count = size
+        end
+    end
+
+    global.buckets[min_index][group.id] = group
+    group.bucket = global.buckets[min_index]
+end
+
+local function remove_from_bucket(group)
+    group.bucket[group.id] = nil
+end
+
+function global_data.get_bucket(tick)
+    local bucket_index = (tick / 60 / constants.bucket_update_interval_seconds) % constants.num_buckets
+    return global.buckets[bucket_index + 1]
 end
 
 function global_data.remove_player_data(player_index)
     global.players[player_index] = nil
 end
 
+function global_data.get_type(entity)
+    return flib_table.find(constants.assemble_entities, entity.name) and "assemble" or "disassemble"
+end
+
+local function show_machine_message(machine, message)
+    util.show_message(message, machine.entity.surface, machine.entity.position)
+end
+
 function global_data.add_new_machine_data(entity, tags)
+    local type = global_data.get_type(entity)
     local new_machine_data = {
         id = entity.unit_number,
         entity = entity,
-        config = tags and tags.machine_config or {
-            color = constants.default_color,
-        },
-        containers = {}
+        config = tags and tags.machine_config or flib_table.deep_copy(constants.default_machine_config[type]),
+        containers = {},
+        type = type,
+        link = {},
     }
-    global.machines[new_machine_data.id] = new_machine_data
-
+    global.machines[type][new_machine_data.id] = new_machine_data
     return new_machine_data
 end
 
-function global_data.get_machine_data(machine_id)
-    return global.machines[machine_id]
+function global_data.get_machine_data(machine_id, disassemble)
+    local type = disassemble and "disassemble" or "assemble"
+    return global.machines[type][machine_id]
 end
 
 function global_data.get_machine_data_from_entity(entity)
-    return global.machines[entity.unit_number]
+    if not entity then return nil end
+    local type = global_data.get_type(entity)
+    return global.machines[type][entity.unit_number]
 end
 
 function global_data.remove_machine_data(entity)
-    local machine_data = global_data.get_machine_data(entity.unit_number)
+    local machine_data = global_data.get_machine_data_from_entity(entity)
     if machine_data then
-        global_data.remove_machine_from_group(machine_data)
-    end
+        local group_data = machine_data.group
 
-    global.machines[entity.unit_number] = nil
+        -- everything downstream is no longer part of a group
+        if group_data then
+            local align = util.get_align(util.opposite(group_data.stop.direction))
+            local link = machine_data
+            while link do
+                show_machine_message(link, { "message.remove-group", group_data.id })
+                group_data.machines[link.id] = nil
+                link.group = nil
+                link.entity.operable = false
+                link.entity.active = false
+                link = link.link[align]
+            end
+            if flib_table.size(group_data.machines) < 1 then
+                global_data.remove_group(group_data)
+            end
+        end
+
+        global_data.unlink_machines(machine_data.link[constants.align.NW], machine_data)
+        global_data.unlink_machines(machine_data, machine_data.link[constants.align.SE])
+
+        global.machines[machine_data.type][entity.unit_number] = nil
+    end
 end
 
-function global_data.add_new_group(first_machine_id, tags)
+function global_data.add_new_group(tags, train_stop, type)
     -- Don't identify groups by machine ID, otherwise we
     -- will need complex logic when splitting and re-joining
     -- groups together.
     local new_group_data = {
         id = global.group_index,
         machines = {},
-        config = tags and tags.group_config or {
-            station_name = constants.default_station_name,
-        },
+        config = tags and tags.group_config or flib_table.deep_copy(constants.default_group_config[type]),
+        type = type,
+        stop = train_stop,
     }
 
-    global.groups[new_group_data.id] = new_group_data
+    global.groups[type][new_group_data.id] = new_group_data
     global.group_index = global.group_index + 1
-
+    add_to_bucket(new_group_data)
     return new_group_data
 end
 
 function global_data.remove_group(group_data)
-    global.groups[group_data.id] = nil
+    remove_from_bucket(group_data)
+    global.groups[group_data.type][group_data.id] = nil
 end
 
-function global_data.add_machines_to_group(group_data, machine_ids, to_front, is_new)
-    if to_front then
-        group_data.machines = flib_table.array_merge { machine_ids, group_data.machines }
-    else
-        group_data.machines = flib_table.array_merge { group_data.machines, machine_ids }
+local function link_group(group, start_machine, align)
+    local link = start_machine
+    while link do
+        show_machine_message(link, { "message.expand-group", group.id })
+        group.machines[link.id] = link
+        link.group = group
+        link.entity.operable = true
+        link.entity.active = true
+        link = link.link[align]
     end
-
-    for _,machine_id in pairs(machine_ids) do
-        global.machines[machine_id].group_id = group_data.id
-    end
-
-    global_data.show_group_update(group_data, string.format("%s Group %d", is_new and "New" or "Grow", group_data.id))
 end
 
-function global_data.join_groups(group_data, group2_data, joiner_machine_data)
-    group_data.machines = flib_table.array_merge{group_data.machines, {joiner_machine_data.id}, group2_data.machines}
+function global_data.link_machines(nw_machine, se_machine)
+    if nw_machine and se_machine then
+        if nw_machine.group and se_machine.group then error("Cannot link two machines having existing groups") end
+        nw_machine.link[constants.align.SE] = se_machine
+        se_machine.link[constants.align.NW] = nw_machine
 
-    joiner_machine_data.group_id = group_data.id
-    for _,machine_id in pairs(group2_data.machines) do
-        global.machines[machine_id].group_id = group_data.id
-    end
-
-    global_data.remove_group(group2_data)
-
-    global_data.show_group_update(group_data, string.format("Join Group %d", group_data.id))
-end
-
-function global_data.remove_machine_from_group(machine_data)
-    local group_id = machine_data and machine_data.group_id or 0
-    local group_data = global.groups[group_id]
-
-    if group_data then
-        -- remove the machine id from the group
-        local size = flib_table.size(group_data.machines)
-        local index = flib_table.find(group_data.machines, machine_data.id)
-
-        -- Removing from front or rear, no problem
-        if index == 1 then 
-            group_data.machines = flib_table.slice(group_data.machines, 2, size)
-            global_data.show_group_update(group_data, string.format("Shrink Group %d", group_data.id))
-        elseif index == size then
-            group_data.machines = flib_table.slice(group_data.machines, 1, size-1)
-            global_data.show_group_update(group_data, string.format("Shrink Group %d", group_data.id))
-        else
-            -- Removing from the middle. Now we have to split this up into two groups
-            local new_group_machines = flib_table.slice(group_data.machines, index + 1, size)
-            
-            group_data.machines = flib_table.slice(group_data.machines, 1, index - 1)
-            global_data.show_group_update(group_data, string.format("Split Group %d", group_data.id))
-
-            local new_group = global_data.add_new_group(new_group_machines[1], {
-                group_config = group_data.config
-            })
-            global_data.add_machines_to_group(new_group, new_group_machines, false, true)
-        end
-
-        if flib_table.size(group_data.machines) < 1 then
-            global_data.remove_group(group_data)
+        if nw_machine.group then
+            link_group(nw_machine.group, se_machine, constants.align.SE)
+        elseif se_machine.group then
+            link_group(se_machine.group, nw_machine, constants.align.NW)
         end
     end
+end
 
-    machine_data.group_id = nil
+function global_data.unlink_machines(nw_machine, se_machine)
+    if nw_machine then nw_machine.link[constants.align.SE] = nil end
+    if se_machine then se_machine.link[constants.align.NW] = nil end
+end
+
+function global_data.add_machines_to_group(group, machines, is_new)
+    for _, machine_data in pairs(machines) do
+        group.machines[machine_data.id] = machine_data
+    end
+
+    for _, machine in pairs(group.machines) do
+        machine.group = group
+    end
+
+    util.show_group_message(group, { is_new and "message.new-group" or "message.expand-group", group.id })
 end
 
 function global_data.get_group_from_entity(entity)
     local machine_data = global_data.get_machine_data_from_entity(entity)
     if machine_data then
-        return global.groups[machine_data.group_id]
+        return machine_data.group
     end
     return nil
 end
 
 function global_data.machine_config_change(entity, config)
-    local machine_data = global_data.get_machine_data_from_entity(entity)
-    machine_data.config = flib_table.deep_merge{machine_data.config, config}
-    global_data.show_machine_update(machine_data, "Machine Config Change")
+    local machine = global_data.get_machine_data_from_entity(entity)
+    if machine then
+        machine.config = flib_table.deep_merge { machine.config, config }
+        show_machine_message(machine, { "message.machine-config-change" })
+    end
 end
 
 function global_data.group_config_change(entity, config)
     local group = global_data.get_group_from_entity(entity)
     if group then
-        group.config = flib_table.deep_merge{group.config, config}
-        global_data.show_group_update(group, "Group Config Change")
-    end
-end
-
-function global_data.show_machine_update(machine_data, message)
-    if machine_data then
-        machine_data.entity.surface.create_entity {
-            name = "flying-text",
-            text = message,
-            position = machine_data.entity.position,
-        }
-    end
-end
-
-function global_data.show_group_update(group_data, message)
-    for _, machine_id in pairs(group_data.machines) do
-        local machine_data = global.machines[machine_id]
-        global_data.show_machine_update(machine_data, message)
+        group.config = flib_table.deep_merge { group.config, config }
+        util.show_group_message(group, { "message.group-config-change" })
     end
 end
 

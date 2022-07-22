@@ -56,9 +56,16 @@ local function tag_train_factories(bp, player, surface)
                 local machine_data = global_data.get_machine_data_from_entity(real_entity[1]) or {}
                 local group_data = global_data.get_group_from_entity(real_entity[1]) or {}
                 blueprint_entity.tags = {
-                    group_config = group_data.config or {},
                     machine_config = machine_data.config or {},
                 }
+
+                if machine_data.stop then
+                    blueprint_entity.tags.group_config = flib_table.deep_copy(group_data.config or {})
+                    blueprint_entity.tags.stop_config = {
+                        backer_name = machine_data.stop.backer_name,
+                        trains_limit = machine_data.stop.trains_limit,
+                    }
+                end
             end
         end
     end

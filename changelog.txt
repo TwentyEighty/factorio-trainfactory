@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 2022.07.22
+  Features:
+    - Huge refactor to support disassemblers. Not compatible with 0.0.1
+  Changes:
+    - The front assembler now has an integrated train stop
+---------------------------------------------------------------------------------------------------
 Version: 0.0.1
 Date: 2022.06.28
   Features:

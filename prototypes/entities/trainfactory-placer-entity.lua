@@ -64,7 +64,7 @@ trainfactory_placer_entity.pictures = {
             lines_per_file = 1,
             shift = { 0.421875, 0 },
             scale = 1.8,
-            tint = { 1, 1, .4 },
+            tint = constants.trainfactory_tint,
             filenames = {
                 "__trainfactory__/graphics/entity/trainfactory-full/trainfactory-full-ns.png",
                 "__trainfactory__/graphics/entity/empty.png",
@@ -80,7 +80,7 @@ trainfactory_placer_entity.pictures = {
                 lines_per_file = 1,
                 shift = util.by_pixel(0.75, 5.75),
                 scale = 0.9,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 filenames = {
                     "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ns.png",
                     "__trainfactory__/graphics/entity/empty.png",
@@ -100,7 +100,7 @@ trainfactory_placer_entity.pictures = {
             lines_per_file = 1,
             shift = { 0.421875, 0 },
             scale = 1.8,
-            tint = { 1, 1, .4 },
+            tint = constants.trainfactory_tint,
             filenames = {
                 "__trainfactory__/graphics/entity/empty.png",
                 "__trainfactory__/graphics/entity/trainfactory-full/trainfactory-full-ew.png",
@@ -116,7 +116,7 @@ trainfactory_placer_entity.pictures = {
                 lines_per_file = 1,
                 shift = util.by_pixel(0.75, 5.75),
                 scale = 0.9,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 filenames = {
                     "__trainfactory__/graphics/entity/empty.png",
                     "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ew.png",
@@ -237,7 +237,7 @@ trainfactory_half_placer_entity.pictures = {
             lines_per_file = 1,
             shift = { 0.421875, 0 },
             scale = 1.8,
-            tint = { 1, 1, .4 },
+            tint = constants.trainfactory_tint,
             filenames = {
                 "__trainfactory__/graphics/entity/trainfactory-half/trainfactory-half-ns.png",
                 "__trainfactory__/graphics/entity/empty.png",
@@ -255,7 +255,7 @@ trainfactory_half_placer_entity.pictures = {
                 lines_per_file = 1,
                 shift = util.by_pixel(0.75, 5.75),
                 scale = 0.9,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 filenames = {
                     "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ns.png",
                     "__trainfactory__/graphics/entity/empty.png",
@@ -275,7 +275,7 @@ trainfactory_half_placer_entity.pictures = {
             lines_per_file = 1,
             shift = { 0.421875, 0 },
             scale = 1.8,
-            tint = { 1, 1, .4 },
+            tint = constants.trainfactory_tint,
             filenames = {
                 "__trainfactory__/graphics/entity/empty.png",
                 "__trainfactory__/graphics/entity/trainfactory-half/trainfactory-half-ew.png",
@@ -293,7 +293,7 @@ trainfactory_half_placer_entity.pictures = {
                 lines_per_file = 1,
                 shift = util.by_pixel(0.75, 5.75),
                 scale = 0.9,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 filenames = {
                     "__trainfactory__/graphics/entity/empty.png",
                     "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ew.png",
@@ -395,6 +395,25 @@ local trainfactory_disassemble_placer_entity = table.deep_merge { trainfactory_p
     icon = table.deep_copy(item.icon),
     icon_size = table.deep_copy(item.icon_size),
     icon_mipmaps = table.deep_copy(item.icon_mipmaps),
+
+    pictures = {
+        layers = {
+            -- north/south
+            {
+                tint = constants.trainfactory_disassemble_tint,
+                hr_version = {
+                    tint = constants.trainfactory_disassemble_tint,
+                }
+            },
+            -- east/west
+            {
+                tint = constants.trainfactory_disassemble_tint,
+                hr_version = {
+                    tint = constants.trainfactory_disassemble_tint,
+                }
+            },
+        }
+    }
 }}
 data:extend({ trainfactory_disassemble_placer_entity })
 
@@ -413,5 +432,24 @@ local trainfactory_disassemble_half_placer_entity = table.deep_merge { trainfact
     icon = table.deep_copy(item.icon),
     icon_size = table.deep_copy(item.icon_size),
     icon_mipmaps = table.deep_copy(item.icon_mipmaps),
+
+    pictures = {
+        layers = {
+            -- north/south
+            {
+                tint = constants.trainfactory_disassemble_tint,
+                hr_version = {
+                    tint = constants.trainfactory_disassemble_tint,
+                }
+            },
+            -- east/west
+            {
+                tint = constants.trainfactory_disassemble_tint,
+                hr_version = {
+                    tint = constants.trainfactory_disassemble_tint,
+                }
+            },
+        }
+    }
 }}
 data:extend({ trainfactory_disassemble_half_placer_entity })

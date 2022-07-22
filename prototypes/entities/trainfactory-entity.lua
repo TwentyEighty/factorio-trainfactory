@@ -14,7 +14,7 @@ local trainfactory_entity = flib_table.deep_merge { base_prototype, {
         item = constants.full_size_placer_item_name,
         count = 1,
     },
-    flags = flib_table.array_merge({ base_prototype.flags, { "not-rotatable", "placeable-off-grid" } }),
+    flags = flib_table.array_merge({ base_prototype.flags, { "placeable-off-grid" } }),
 
     crafting_speed = 0.5,
     energy_usage = "200kW",
@@ -23,8 +23,8 @@ local trainfactory_entity = flib_table.deep_merge { base_prototype, {
     allowed_effects = { "consumption", },
 
     -- Resolve localization here so the placer entity can copy it
-    localised_name = {"entity-name.trainfactory-full-entity"},
-    localised_description = {"entity-description.trainfactory-full-entity"},
+    localised_name = { "entity-name.trainfactory-full-entity" },
+    localised_description = { "entity-description.trainfactory-full-entity" },
     subgroup = "other",
 
     -- facing north
@@ -70,7 +70,7 @@ trainfactory_entity.animation = {
                 frame_count = 1,
                 shift = { 0.421875, 0 },
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ns.png",
@@ -80,7 +80,7 @@ trainfactory_entity.animation = {
                     frame_count = 1,
                     shift = util.by_pixel(0.75, 5.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             },
             {
@@ -92,7 +92,7 @@ trainfactory_entity.animation = {
                 shift = { 0.421875, 0 },
                 draw_as_shadow = true,
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-shadow-ns.png",
@@ -103,7 +103,7 @@ trainfactory_entity.animation = {
                     draw_as_shadow = true,
                     shift = util.by_pixel(11.25, 7.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             }
         }
@@ -119,7 +119,7 @@ trainfactory_entity.animation = {
                 frame_count = 1,
                 shift = { 0.421875, 0 },
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ns.png",
@@ -129,7 +129,7 @@ trainfactory_entity.animation = {
                     frame_count = 1,
                     shift = util.by_pixel(0.75, 5.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             },
             {
@@ -141,7 +141,7 @@ trainfactory_entity.animation = {
                 shift = { 0.421875, 0 },
                 draw_as_shadow = true,
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-shadow-ns.png",
@@ -152,7 +152,7 @@ trainfactory_entity.animation = {
                     draw_as_shadow = true,
                     shift = util.by_pixel(11.25, 7.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             }
         }
@@ -168,7 +168,7 @@ trainfactory_entity.animation = {
                 frame_count = 1,
                 shift = { 0.421875, 0 },
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ew.png",
@@ -178,7 +178,7 @@ trainfactory_entity.animation = {
                     frame_count = 1,
                     shift = util.by_pixel(0.75, 5.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             },
             {
@@ -190,7 +190,7 @@ trainfactory_entity.animation = {
                 shift = { 0.421875, 0 },
                 draw_as_shadow = true,
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-shadow-ew.png",
@@ -201,7 +201,7 @@ trainfactory_entity.animation = {
                     draw_as_shadow = true,
                     shift = util.by_pixel(11.25, 7.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             }
         }
@@ -217,7 +217,7 @@ trainfactory_entity.animation = {
                 frame_count = 1,
                 shift = { 0.421875, 0 },
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ew.png",
@@ -227,7 +227,7 @@ trainfactory_entity.animation = {
                     frame_count = 1,
                     shift = util.by_pixel(0.75, 5.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             },
             {
@@ -239,7 +239,7 @@ trainfactory_entity.animation = {
                 shift = { 0.421875, 0 },
                 draw_as_shadow = true,
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-shadow-ew.png",
@@ -250,7 +250,7 @@ trainfactory_entity.animation = {
                     draw_as_shadow = true,
                     shift = util.by_pixel(11.25, 7.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             }
         }
@@ -272,7 +272,7 @@ trainfactory_entity.working_visualisations = {
                     frame_count = 1,
                     shift = { 0.421875, 0 },
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ns.png",
@@ -282,7 +282,7 @@ trainfactory_entity.working_visualisations = {
                         frame_count = 1,
                         shift = util.by_pixel(0.75, 5.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 },
                 {
@@ -294,7 +294,7 @@ trainfactory_entity.working_visualisations = {
                     shift = { 0.421875, 0 },
                     draw_as_shadow = true,
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-shadow-ns.png",
@@ -305,7 +305,7 @@ trainfactory_entity.working_visualisations = {
                         draw_as_shadow = true,
                         shift = util.by_pixel(11.25, 7.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 }
             }
@@ -321,7 +321,7 @@ trainfactory_entity.working_visualisations = {
                     frame_count = 1,
                     shift = { 0.421875, 0 },
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ns.png",
@@ -331,7 +331,7 @@ trainfactory_entity.working_visualisations = {
                         frame_count = 1,
                         shift = util.by_pixel(0.75, 5.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 },
                 {
@@ -343,7 +343,7 @@ trainfactory_entity.working_visualisations = {
                     shift = { 0.421875, 0 },
                     draw_as_shadow = true,
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-shadow-ns.png",
@@ -354,7 +354,7 @@ trainfactory_entity.working_visualisations = {
                         draw_as_shadow = true,
                         shift = util.by_pixel(11.25, 7.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 }
             }
@@ -370,7 +370,7 @@ trainfactory_entity.working_visualisations = {
                     frame_count = 1,
                     shift = { 0.421875, 0 },
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ew.png",
@@ -380,7 +380,7 @@ trainfactory_entity.working_visualisations = {
                         frame_count = 1,
                         shift = util.by_pixel(0.75, 5.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 },
                 {
@@ -392,7 +392,7 @@ trainfactory_entity.working_visualisations = {
                     shift = { 0.421875, 0 },
                     draw_as_shadow = true,
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-shadow-ew.png",
@@ -403,7 +403,7 @@ trainfactory_entity.working_visualisations = {
                         draw_as_shadow = true,
                         shift = util.by_pixel(11.25, 7.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 }
             }
@@ -419,7 +419,7 @@ trainfactory_entity.working_visualisations = {
                     frame_count = 1,
                     shift = { 0.421875, 0 },
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ew.png",
@@ -429,7 +429,7 @@ trainfactory_entity.working_visualisations = {
                         frame_count = 1,
                         shift = util.by_pixel(0.75, 5.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 },
                 {
@@ -441,7 +441,7 @@ trainfactory_entity.working_visualisations = {
                     shift = { 0.421875, 0 },
                     draw_as_shadow = true,
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-shadow-ew.png",
@@ -452,7 +452,7 @@ trainfactory_entity.working_visualisations = {
                         draw_as_shadow = true,
                         shift = util.by_pixel(11.25, 7.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 }
             }
@@ -472,8 +472,8 @@ local trainfactory_half_entity = flib_table.deep_merge { trainfactory_entity, {
     },
 
     -- Resolve localization here so the placer entity can copy it
-    localised_name = {"entity-name.trainfactory-half-entity"},
-    localised_description = {"entity-description.trainfactory-half-entity"},
+    localised_name = { "entity-name.trainfactory-half-entity" },
+    localised_description = { "entity-description.trainfactory-half-entity" },
     subgroup = "other",
 
     -- facing north
@@ -499,7 +499,7 @@ trainfactory_half_entity.animation = {
                 frame_count = 1,
                 shift = { 0.421875, 0 },
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ns.png",
@@ -509,7 +509,7 @@ trainfactory_half_entity.animation = {
                     frame_count = 1,
                     shift = util.by_pixel(0.75, 5.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             },
             {
@@ -521,7 +521,7 @@ trainfactory_half_entity.animation = {
                 shift = { 0.421875, 0 },
                 draw_as_shadow = true,
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-shadow-ns.png",
@@ -532,7 +532,7 @@ trainfactory_half_entity.animation = {
                     draw_as_shadow = true,
                     shift = util.by_pixel(11.25, 7.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             }
         }
@@ -548,7 +548,7 @@ trainfactory_half_entity.animation = {
                 frame_count = 1,
                 shift = { 0.421875, 0 },
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ns.png",
@@ -558,7 +558,7 @@ trainfactory_half_entity.animation = {
                     frame_count = 1,
                     shift = util.by_pixel(0.75, 5.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             },
             {
@@ -570,7 +570,7 @@ trainfactory_half_entity.animation = {
                 shift = { 0.421875, 0 },
                 draw_as_shadow = true,
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-shadow-ns.png",
@@ -581,7 +581,7 @@ trainfactory_half_entity.animation = {
                     draw_as_shadow = true,
                     shift = util.by_pixel(11.25, 7.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             }
         }
@@ -597,7 +597,7 @@ trainfactory_half_entity.animation = {
                 frame_count = 1,
                 shift = { 0.421875, 0 },
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ew.png",
@@ -607,7 +607,7 @@ trainfactory_half_entity.animation = {
                     frame_count = 1,
                     shift = util.by_pixel(0.75, 5.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             },
             {
@@ -619,7 +619,7 @@ trainfactory_half_entity.animation = {
                 shift = { 0.421875, 0 },
                 draw_as_shadow = true,
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-shadow-ew.png",
@@ -630,7 +630,7 @@ trainfactory_half_entity.animation = {
                     draw_as_shadow = true,
                     shift = util.by_pixel(11.25, 7.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             }
         }
@@ -646,7 +646,7 @@ trainfactory_half_entity.animation = {
                 frame_count = 1,
                 shift = { 0.421875, 0 },
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ew.png",
@@ -656,7 +656,7 @@ trainfactory_half_entity.animation = {
                     frame_count = 1,
                     shift = util.by_pixel(0.75, 5.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             },
             {
@@ -668,7 +668,7 @@ trainfactory_half_entity.animation = {
                 shift = { 0.421875, 0 },
                 draw_as_shadow = true,
                 scale = 1.8,
-                tint = { 1, 1, .4 },
+                tint = constants.trainfactory_tint,
                 hr_version =
                 {
                     filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-shadow-ew.png",
@@ -679,7 +679,7 @@ trainfactory_half_entity.animation = {
                     draw_as_shadow = true,
                     shift = util.by_pixel(11.25, 7.75),
                     scale = 0.9,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                 }
             }
         }
@@ -701,7 +701,7 @@ trainfactory_half_entity.working_visualisations = {
                     frame_count = 1,
                     shift = { 0.421875, 0 },
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ns.png",
@@ -711,7 +711,7 @@ trainfactory_half_entity.working_visualisations = {
                         frame_count = 1,
                         shift = util.by_pixel(0.75, 5.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 },
                 {
@@ -723,7 +723,7 @@ trainfactory_half_entity.working_visualisations = {
                     shift = { 0.421875, 0 },
                     draw_as_shadow = true,
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-shadow-ns.png",
@@ -734,7 +734,7 @@ trainfactory_half_entity.working_visualisations = {
                         draw_as_shadow = true,
                         shift = util.by_pixel(11.25, 7.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 }
             }
@@ -750,7 +750,7 @@ trainfactory_half_entity.working_visualisations = {
                     frame_count = 1,
                     shift = { 0.421875, 0 },
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ns.png",
@@ -760,7 +760,7 @@ trainfactory_half_entity.working_visualisations = {
                         frame_count = 1,
                         shift = util.by_pixel(0.75, 5.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 },
                 {
@@ -772,7 +772,7 @@ trainfactory_half_entity.working_visualisations = {
                     shift = { 0.421875, 0 },
                     draw_as_shadow = true,
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-shadow-ns.png",
@@ -783,7 +783,7 @@ trainfactory_half_entity.working_visualisations = {
                         draw_as_shadow = true,
                         shift = util.by_pixel(11.25, 7.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 }
             }
@@ -799,7 +799,7 @@ trainfactory_half_entity.working_visualisations = {
                     frame_count = 1,
                     shift = { 0.421875, 0 },
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ew.png",
@@ -809,7 +809,7 @@ trainfactory_half_entity.working_visualisations = {
                         frame_count = 1,
                         shift = util.by_pixel(0.75, 5.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 },
                 {
@@ -821,7 +821,7 @@ trainfactory_half_entity.working_visualisations = {
                     shift = { 0.421875, 0 },
                     draw_as_shadow = true,
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-shadow-ew.png",
@@ -832,7 +832,7 @@ trainfactory_half_entity.working_visualisations = {
                         draw_as_shadow = true,
                         shift = util.by_pixel(11.25, 7.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 }
             }
@@ -848,7 +848,7 @@ trainfactory_half_entity.working_visualisations = {
                     frame_count = 1,
                     shift = { 0.421875, 0 },
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ew.png",
@@ -858,7 +858,7 @@ trainfactory_half_entity.working_visualisations = {
                         frame_count = 1,
                         shift = util.by_pixel(0.75, 5.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 },
                 {
@@ -870,7 +870,7 @@ trainfactory_half_entity.working_visualisations = {
                     shift = { 0.421875, 0 },
                     draw_as_shadow = true,
                     scale = 1.8,
-                    tint = { 1, 1, .4 },
+                    tint = constants.trainfactory_tint,
                     hr_version =
                     {
                         filename = "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-shadow-ew.png",
@@ -881,7 +881,7 @@ trainfactory_half_entity.working_visualisations = {
                         draw_as_shadow = true,
                         shift = util.by_pixel(11.25, 7.75),
                         scale = 0.9,
-                        tint = { 1, 1, .4 },
+                        tint = constants.trainfactory_tint,
                     }
                 }
             }
@@ -891,18 +891,218 @@ trainfactory_half_entity.working_visualisations = {
 
 data:extend({ trainfactory_half_entity })
 
-local fuel_and_equipment_container = {
+local trainfactory_disassemble_full_entity = flib_table.deep_merge { trainfactory_entity, {
+    name = constants.full_size_disassemble_entity_name,
+    type = "furnace",
+    source_inventory_size = 1,
+    result_inventory_size = 20,
+    minable = {
+        result = constants.full_size_disassemble_placer_item_name,
+    },
+    placeable_by = {
+        item = constants.full_size_disassemble_placer_item_name,
+    },
+
+    -- Resolve localization here so the placer entity can copy it
+    localised_name = { "entity-name.trainfactory-disassemble-full-entity" },
+    localised_description = { "entity-description.trainfactory-disassemble-full-entity" },
+
+    -- Cannot interact with the fuel box as an output if we can pull out of the crafting machine
+    flags = { "no-automated-item-insertion", "no-automated-item-removal" },
+
+    animation = {
+        north = {
+            layers = {
+                {
+                    tint = constants.trainfactory_disassemble_tint,
+                    hr_version = { tint = constants.trainfactory_tint },
+                },
+            }
+        },
+        south = {
+            layers = {
+                {
+                    tint = constants.trainfactory_disassemble_tint,
+                    hr_version = { tint = constants.trainfactory_tint },
+                },
+            }
+        },
+        east = {
+            layers = {
+                {
+                    tint = constants.trainfactory_disassemble_tint,
+                    hr_version = { tint = constants.trainfactory_tint },
+                },
+            }
+        },
+        west = {
+            layers = {
+                {
+                    tint = constants.trainfactory_disassemble_tint,
+                    hr_version = { tint = constants.trainfactory_tint },
+                },
+            }
+        },
+    },
+
+    working_visualisations = {
+        {
+            north_animation = {
+                layers =
+                {
+                    {
+                        tint = constants.trainfactory_disassemble_tint,
+                        hr_version = { tint = constants.trainfactory_disassemble_tint },
+                    },
+                }
+            },
+            south_animation = {
+                layers =
+                {
+                    {
+                        tint = constants.trainfactory_disassemble_tint,
+                        hr_version = { tint = constants.trainfactory_disassemble_tint },
+                    },
+                }
+            },
+            east_animation = {
+                layers =
+                {
+                    {
+                        tint = constants.trainfactory_disassemble_tint,
+                        hr_version = { tint = constants.trainfactory_disassemble_tint },
+                    },
+                }
+            },
+            west_animation = {
+                layers =
+                {
+                    {
+                        tint = constants.trainfactory_disassemble_tint,
+                        hr_version = { tint = constants.trainfactory_disassemble_tint },
+                    },
+                }
+            },
+        }
+    }
+} }
+trainfactory_disassemble_full_entity.crafting_categories = { constants.full_size_disassemble_recipe_category, }
+data:extend({ trainfactory_disassemble_full_entity })
+
+local trainfactory_disassemble_half_entity = flib_table.deep_merge { trainfactory_half_entity, {
+    name = constants.half_size_disassemble_entity_name,
+    type = "furnace",
+    source_inventory_size = 1,
+    result_inventory_size = 20,
+    minable = {
+        result = constants.half_size_disassemble_placer_item_name,
+    },
+    placeable_by = {
+        item = constants.half_size_disassemble_placer_item_name,
+    },
+
+    -- Resolve localization here so the placer entity can copy it
+    localised_name = { "entity-name.trainfactory-disassemble-half-entity" },
+    localised_description = { "entity-description.trainfactory-disassemble-half-entity" },
+
+    -- Cannot interact with the fuel box as an output if we can pull out of the crafting machine
+    flags = { "no-automated-item-insertion", "no-automated-item-removal" },
+
+    animation = {
+        north = {
+            layers = {
+                {
+                    tint = constants.trainfactory_disassemble_tint,
+                    hr_version = { tint = constants.trainfactory_tint },
+                },
+            }
+        },
+        south = {
+            layers = {
+                {
+                    tint = constants.trainfactory_disassemble_tint,
+                    hr_version = { tint = constants.trainfactory_tint },
+                },
+            }
+        },
+        east = {
+            layers = {
+                {
+                    tint = constants.trainfactory_disassemble_tint,
+                    hr_version = { tint = constants.trainfactory_tint },
+                },
+            }
+        },
+        west = {
+            layers = {
+                {
+                    tint = constants.trainfactory_disassemble_tint,
+                    hr_version = { tint = constants.trainfactory_tint },
+                },
+            }
+        },
+    },
+
+    working_visualisations = {
+        {
+            north_animation = {
+                layers =
+                {
+                    {
+                        tint = constants.trainfactory_disassemble_tint,
+                        hr_version = { tint = constants.trainfactory_disassemble_tint },
+                    },
+                }
+            },
+            south_animation = {
+                layers =
+                {
+                    {
+                        tint = constants.trainfactory_disassemble_tint,
+                        hr_version = { tint = constants.trainfactory_disassemble_tint },
+                    },
+                }
+            },
+            east_animation = {
+                layers =
+                {
+                    {
+                        tint = constants.trainfactory_disassemble_tint,
+                        hr_version = { tint = constants.trainfactory_disassemble_tint },
+                    },
+                }
+            },
+            west_animation = {
+                layers =
+                {
+                    {
+                        tint = constants.trainfactory_disassemble_tint,
+                        hr_version = { tint = constants.trainfactory_disassemble_tint },
+                    },
+                }
+            },
+        }
+    }
+} }
+trainfactory_disassemble_half_entity.crafting_categories = { constants.half_size_disassemble_recipe_category, }
+data:extend({ trainfactory_disassemble_half_entity })
+
+------------------------------------------
+----- FUEL AND EQUIPMENT CONTAINERS ------
+------------------------------------------
+
+local input_fuel_and_equipment_container = {
     type = "linked-container",
-    name = "trainfactory-fuel-and-equipment-container",
-    icon = "__pyindustry__/graphics/icons/py-sinkhole.png",
+    name = constants.input_fuel_container_name,
+    icon = "__base__/graphics/icons/iron-chest.png",
     icon_size = 64,
     flags = { "placeable-neutral", "player-creation", "not-blueprintable", "not-deconstructable", "placeable-off-grid" },
     max_health = 200,
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume = 0.5 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
     collision_mask = {},
-    collision_box = { { -.4, -.4 }, { .4, .4 } },
-    selection_box = { { -.4, -.4 }, { .4, .4 } },
+    collision_box = { { -.8, -.5 }, { .8, .5 } },
+    selection_box = { { -.8, -.5 }, { .8, .5 } },
     inventory_size = 1,
     gui_mode = "none",
     picture = {
@@ -913,6 +1113,69 @@ local fuel_and_equipment_container = {
         height = 1,
         priority = "low",
     },
-    selection_priority = 52,
+    selection_priority = 53,
 }
-data:extend({ fuel_and_equipment_container })
+data:extend({ input_fuel_and_equipment_container })
+
+local input_fuel_and_equipment_container_horiz = flib_table.deep_merge { input_fuel_and_equipment_container, {
+    name = constants.input_fuel_container_name_horiz,
+    collision_box = { { -.5, -.8 }, { .5, .8 } },
+    selection_box = { { -.5, -.8 }, { .5, .8 } },
+}}
+data:extend({ input_fuel_and_equipment_container_horiz })
+
+------------------------------------------
+----- DISASSEMBLY OUTPUT CONTAINER  ------
+------------------------------------------
+
+local output_container_full = flib_table.deep_merge { input_fuel_and_equipment_container, {
+    name = constants.output_container_name_full,
+    inventory_size = 20,
+    collision_box = { { -.8, -3.0 }, { .8, 3.0 } },
+    selection_box = { { -.8, -3.0 }, { .8, 3.0 } },
+    placeable_by = {
+        item = constants.full_size_placer_item_name,
+        count = 1,
+    },
+}}
+data:extend({ output_container_full })
+
+local output_container_half = flib_table.deep_merge { output_container_full, {
+    name = constants.output_container_name_half,
+    collision_box = { { -.8, -1.0 }, { .8, 1.0 } },
+    selection_box = { { -.8, -1.0 }, { .8, 1.0 } },
+    placeable_by = {
+        item = constants.half_size_placer_item_name,
+        count = 1,
+    },
+}}
+data:extend({ output_container_half })
+
+local output_container_full_horiz = flib_table.deep_merge { input_fuel_and_equipment_container, {
+    name = constants.output_container_name_full_horiz,
+    inventory_size = 20,
+    collision_box = { { -3.0, -0.8 }, { 3.0, 0.8 } },
+    selection_box = { { -3.0, -0.8 }, { 3.0, 0.8 } },
+}}
+data:extend({ output_container_full_horiz })
+
+local output_container_half_horiz = flib_table.deep_merge { output_container_full, {
+    name = constants.output_container_name_half_horiz,
+    collision_box = { { -1.0, -0.8 }, { 1.0, 0.8 } },
+    selection_box = { { -1.0, -0.8 }, { 1.0, 0.8 } },
+}}
+data:extend({ output_container_half_horiz })
+
+------------------------------------------
+------------ INTEGRATED STOP  ------------
+------------------------------------------
+
+local integrated_stop = flib_table.deep_merge { data.raw["train-stop"]["train-stop"], {
+    name = constants.integrated_stop_name,
+    icon = "__base__/graphics/icons/iron-chest.png",
+    icon_size = 64,
+    flags = { "placeable-neutral", "player-creation", "not-blueprintable", "not-deconstructable", "placeable-off-grid" },
+    selectable_in_game = false,
+}}
+integrated_stop.minable = nil
+data:extend({ integrated_stop })
