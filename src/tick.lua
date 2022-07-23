@@ -87,7 +87,7 @@ local function check_rail_segment(group)
     end_pos = util.add_positions(end_pos,
         flib_direction.to_vector(forward, e2_joints.connection_distance / 2 + e2_joints.snap_distance))
     local rolling_stock = e1.surface.find_entities_filtered({
-        area = { top_right = start_pos, bottom_left = end_pos },
+        area = { left_top = start_pos, right_bottom = end_pos },
         type = constants.rolling_stock_types,
     })
 

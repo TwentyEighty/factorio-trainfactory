@@ -24,7 +24,7 @@ local function change_station_name(player, name)
     end
 end
 
-function change_disassembler_stop_name(player, name)
+local function change_disassembler_stop_name(player, name)
     local entity = player.opened
     local relative = player.gui.relative["trainfactory_dis_config"]
     if entity and relative then
@@ -38,7 +38,7 @@ function change_disassembler_stop_name(player, name)
     end
 end
 
-function change_disassembler_stop_limit(player)
+local function change_disassembler_stop_limit(player)
     local entity = player.opened
     local relative = player.gui.relative["trainfactory_dis_config"]
     if entity and relative then
