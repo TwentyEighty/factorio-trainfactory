@@ -121,8 +121,8 @@ local function translate_message(rc)
     if type(rc) == "table" then return rc end
 
     if     rc == constants.result.OK then return nil
-    elseif rc == constants.result.OCCUPIED then return {"message.occupied"}
-    elseif rc == constants.result.NO_STOCK then return {"message.no-stock"}
+    -- elseif rc == constants.result.OCCUPIED then return {"message.occupied"}
+    -- elseif rc == constants.result.NO_STOCK then return {"message.no-stock"}
     elseif rc == constants.result.CANT_BUILD then return {"message.cant-build"}
     elseif rc == constants.result.BROKEN then return {"message.broken"}
     elseif rc == constants.result.BUSY then return {"message.busy"}

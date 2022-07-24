@@ -1,8 +1,11 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.0.3
 Date: 2022-07-23
+  Changes:
+    - Don't show flying text messages for missing stock or train present
   Bugfixes:
     - Fixed typo: detection of rolling stock on tracks before build
+    - Fixed destruction planner in editor mode
 ---------------------------------------------------------------------------------------------------
 Version: 0.0.2
 Date: 2022.07.22

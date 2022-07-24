@@ -55,7 +55,9 @@ end)
 
 script.on_event({
     defines.events.on_player_mined_entity,
-    defines.events.on_robot_mined_entity, }, function(event)
+    defines.events.on_robot_mined_entity,
+    defines.events.on_entity_died,
+    defines.events.script_raised_destroy}, function(event)
     local entity = event.entity
     if entity and entity.valid then
         if flib_table.find(constants.building_entities, entity.name) then
