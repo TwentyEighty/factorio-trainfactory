@@ -60,7 +60,7 @@ constants.placer_mapping = {
     [constants.half_size_disassemble_placer_entity_name] = constants.half_size_disassemble_entity_name,
 }
 
-constants.fuel_joules_to_insert = 40 * 1000000
+constants.fuel_joules_to_insert = 200 * 1000000 -- stack of coal
 constants.rolling_stock_types = {
     "locomotive",
     "artillery-wagon",
