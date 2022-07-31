@@ -1,6 +1,7 @@
 local flib_table = require("__flib__.table")
 local constants = require("constants")
 local collision_data = require("prototypes.collision-mask")
+local trainfactory_layer = collision_data and collision_data.layer or "layer-50" -- make YAFC happy
 
 local base_prototype = data.raw["assembling-machine"]["assembling-machine-1"]
 local trainfactory_entity = flib_table.deep_merge { base_prototype, {
@@ -30,7 +31,7 @@ local trainfactory_entity = flib_table.deep_merge { base_prototype, {
     -- facing north
     selection_box = { { -3, -3 }, { 3, 3 } },
     collision_box = { { -2.9, -2.9 }, { 2.9, 2.9 } },
-    collision_mask = { "player-layer", collision_data.layer },
+    collision_mask = { "player-layer", trainfactory_layer },
 
     -- We want this to be lower than locos/wagons, but higher than rails. Default is 50,
     -- so we'll set this to 49 and adjust straight rails to also be 49

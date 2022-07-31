@@ -1,6 +1,7 @@
 local table = require("__flib__.table")
 local constants = require("constants")
 local collision_data = require("prototypes.collision-mask")
+local trainfactory_layer = collision_data and collision_data.layer or "layer-50" -- make YAFC happy
 
 local base_prototype = data.raw["locomotive"]["locomotive"]
 local result_entity = data.raw["assembling-machine"][constants.full_size_entity_name]
@@ -19,7 +20,7 @@ local trainfactory_placer_entity = table.deep_merge { base_prototype, {
     vertical_selection_shift = -0.5,
     selection_box = { { -3, -2.5 }, { 3, 2.5 } },
     collision_box = { { -2.95, -2.45 }, { 2.95, 2.45 } },
-    collision_mask = { "train-layer", "player-layer", collision_data.layer},
+    collision_mask = { "train-layer", "player-layer", trainfactory_layer},
 
     joint_distance = constants.entity_joint_data[constants.full_size_entity_name].joint_distance,
     connection_distance = -5, -- don't try to connect to nearby trains
