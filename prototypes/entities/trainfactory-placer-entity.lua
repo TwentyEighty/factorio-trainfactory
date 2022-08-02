@@ -56,74 +56,38 @@ trainfactory_placer_entity.pictures = {
     layers = {
         -- north/south
         {
-            priority = "high",
-            width = 129,
-            height = 100,
+            width = 239,
+            height = 219,
             direction_count = 4,
             frame_count = 1,
             line_length = 1,
             lines_per_file = 1,
-            shift = { 0.421875, 0 },
-            scale = 1.8,
+            shift = util.by_pixel(0.75, 5.75),
+            scale = 0.9,
             tint = constants.trainfactory_tint,
             filenames = {
-                "__trainfactory__/graphics/entity/trainfactory-full/trainfactory-full-ns.png",
+                "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ns.png",
                 "__trainfactory__/graphics/entity/empty.png",
-                "__trainfactory__/graphics/entity/trainfactory-full/trainfactory-full-ns.png",
+                "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ns.png",
                 "__trainfactory__/graphics/entity/empty.png",
-            },
-            hr_version = {
-                width = 239,
-                height = 219,
-                direction_count = 4,
-                frame_count = 1,
-                line_length = 1,
-                lines_per_file = 1,
-                shift = util.by_pixel(0.75, 5.75),
-                scale = 0.9,
-                tint = constants.trainfactory_tint,
-                filenames = {
-                    "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ns.png",
-                    "__trainfactory__/graphics/entity/empty.png",
-                    "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ns.png",
-                    "__trainfactory__/graphics/entity/empty.png",
-                }
             }
         },
         -- east/west
         {
-            priority = "high",
-            width = 129,
-            height = 100,
+            width = 239,
+            height = 219,
             direction_count = 4,
             frame_count = 1,
             line_length = 1,
             lines_per_file = 1,
-            shift = { 0.421875, 0 },
-            scale = 1.8,
+            shift = util.by_pixel(0.75, 5.75),
+            scale = 0.9,
             tint = constants.trainfactory_tint,
             filenames = {
                 "__trainfactory__/graphics/entity/empty.png",
-                "__trainfactory__/graphics/entity/trainfactory-full/trainfactory-full-ew.png",
+                "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ew.png",
                 "__trainfactory__/graphics/entity/empty.png",
-                "__trainfactory__/graphics/entity/trainfactory-full/trainfactory-full-ew.png",
-            },
-            hr_version = {
-                width = 239,
-                height = 219,
-                direction_count = 4,
-                frame_count = 1,
-                line_length = 1,
-                lines_per_file = 1,
-                shift = util.by_pixel(0.75, 5.75),
-                scale = 0.9,
-                tint = constants.trainfactory_tint,
-                filenames = {
-                    "__trainfactory__/graphics/entity/empty.png",
-                    "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ew.png",
-                    "__trainfactory__/graphics/entity/empty.png",
-                    "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ew.png",
-                }
+                "__trainfactory__/graphics/entity/trainfactory-full/hr-trainfactory-full-ew.png",
             }
         },
         -- We need to manually draw on the indicator arrows because locomotives don't
@@ -230,77 +194,39 @@ trainfactory_half_placer_entity.pictures = {
         -- north/south
         {
             priority = "high",
-            width = 100,
-            height = 68,
+            width = 219,
+            height = 125,
             direction_count = 4,
             frame_count = 1,
             line_length = 1,
             lines_per_file = 1,
-            shift = { 0.421875, 0 },
-            scale = 1.8,
+            shift = util.by_pixel(0.75, 5.75),
+            scale = 0.9,
             tint = constants.trainfactory_tint,
             filenames = {
-                "__trainfactory__/graphics/entity/trainfactory-half/trainfactory-half-ns.png",
+                "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ns.png",
                 "__trainfactory__/graphics/entity/empty.png",
-                "__trainfactory__/graphics/entity/trainfactory-half/trainfactory-half-ns.png",
+                "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ns.png",
                 "__trainfactory__/graphics/entity/empty.png",
-            },
-            hr_version =
-            {
-                priority = "high",
-                width = 219,
-                height = 125,
-                direction_count = 4,
-                frame_count = 1,
-                line_length = 1,
-                lines_per_file = 1,
-                shift = util.by_pixel(0.75, 5.75),
-                scale = 0.9,
-                tint = constants.trainfactory_tint,
-                filenames = {
-                    "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ns.png",
-                    "__trainfactory__/graphics/entity/empty.png",
-                    "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ns.png",
-                    "__trainfactory__/graphics/entity/empty.png",
-                }
             }
         },
         -- east/west
         {
             priority = "high",
-            width = 68,
-            height = 100,
+            width = 125,
+            height = 219,
             direction_count = 4,
             frame_count = 1,
             line_length = 1,
             lines_per_file = 1,
-            shift = { 0.421875, 0 },
-            scale = 1.8,
+            shift = util.by_pixel(0.75, 5.75),
+            scale = 0.9,
             tint = constants.trainfactory_tint,
             filenames = {
                 "__trainfactory__/graphics/entity/empty.png",
-                "__trainfactory__/graphics/entity/trainfactory-half/trainfactory-half-ew.png",
+                "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ew.png",
                 "__trainfactory__/graphics/entity/empty.png",
-                "__trainfactory__/graphics/entity/trainfactory-half/trainfactory-half-ew.png",
-            },
-            hr_version =
-            {
-                priority = "high",
-                width = 125,
-                height = 219,
-                direction_count = 4,
-                frame_count = 1,
-                line_length = 1,
-                lines_per_file = 1,
-                shift = util.by_pixel(0.75, 5.75),
-                scale = 0.9,
-                tint = constants.trainfactory_tint,
-                filenames = {
-                    "__trainfactory__/graphics/entity/empty.png",
-                    "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ew.png",
-                    "__trainfactory__/graphics/entity/empty.png",
-                    "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ew.png",
-                }
+                "__trainfactory__/graphics/entity/trainfactory-half/hr-trainfactory-half-ew.png",
             }
         },
         -- We need to manually draw on the indicator arrows because locomotives don't
@@ -402,16 +328,10 @@ local trainfactory_disassemble_placer_entity = table.deep_merge { trainfactory_p
             -- north/south
             {
                 tint = constants.trainfactory_disassemble_tint,
-                hr_version = {
-                    tint = constants.trainfactory_disassemble_tint,
-                }
             },
             -- east/west
             {
                 tint = constants.trainfactory_disassemble_tint,
-                hr_version = {
-                    tint = constants.trainfactory_disassemble_tint,
-                }
             },
         }
     }
@@ -439,16 +359,10 @@ local trainfactory_disassemble_half_placer_entity = table.deep_merge { trainfact
             -- north/south
             {
                 tint = constants.trainfactory_disassemble_tint,
-                hr_version = {
-                    tint = constants.trainfactory_disassemble_tint,
-                }
             },
             -- east/west
             {
                 tint = constants.trainfactory_disassemble_tint,
-                hr_version = {
-                    tint = constants.trainfactory_disassemble_tint,
-                }
             },
         }
     }
