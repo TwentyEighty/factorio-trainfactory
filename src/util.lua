@@ -127,7 +127,7 @@ local function translate_message(rc)
     elseif rc == constants.result.BROKEN then return {"message.broken"}
     elseif rc == constants.result.BUSY then return {"message.busy"}
     elseif rc == constants.result.NO_INSERT then return {"message.no-insert"}
-    elseif rc == constants.result.NO_TRAIN then return {"message.no-train"}
+    -- elseif rc == constants.result.NO_TRAIN then return {"message.no-train"}
     elseif rc == constants.result.NOT_EMPTY then return {"message.not-empty"}
     elseif rc == constants.result.TWO_GROUPS then return {"message.two-groups"}
     elseif rc == constants.result.FRONT_OF_LINE then return {"message.front-of-line"}
