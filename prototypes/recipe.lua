@@ -4,7 +4,7 @@ data:extend {
     {
         type = "recipe",
         name = "trainfactory-full",
-        category = "advanced-crafting",
+        category = "crafting",
         normal =
         {
             enabled = false,
@@ -27,7 +27,7 @@ data:extend {
     }, {
         type = "recipe",
         name = "trainfactory-half",
-        category = "advanced-crafting",
+        category = "crafting",
         normal =
         {
             enabled = false,
@@ -51,7 +51,7 @@ data:extend {
     {
         type = "recipe",
         name = "trainfactory-disassemble-full",
-        category = "advanced-crafting",
+        category = "crafting",
         normal =
         {
             enabled = false,
@@ -74,7 +74,7 @@ data:extend {
     }, {
         type = "recipe",
         name = "trainfactory-disassemble-half",
-        category = "advanced-crafting",
+        category = "crafting",
         normal =
         {
             enabled = false,
