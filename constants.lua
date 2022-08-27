@@ -2,6 +2,7 @@ local constants = {}
 
 constants.num_buckets = 5
 constants.bucket_update_interval_seconds = 1
+constants.energy_required = 30
 
 constants.align = {
     NW = 0,

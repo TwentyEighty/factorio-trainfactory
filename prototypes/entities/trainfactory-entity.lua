@@ -41,7 +41,7 @@ local trainfactory_entity = flib_table.deep_merge { base_prototype, {
     connection_distance = 3,
 } }
 
-trainfactory_entity.crafting_categories = { "train-crafting-full", }
+trainfactory_entity.crafting_categories = { constants.full_size_recipe_category, }
 trainfactory_entity.fast_replaceable_group = nil
 trainfactory_entity.next_upgrade = nil
 
@@ -301,7 +301,7 @@ local trainfactory_half_entity = flib_table.deep_merge { trainfactory_entity, {
     connection_distance = 2,
 } }
 
-trainfactory_half_entity.crafting_categories = { "train-crafting-half", }
+trainfactory_half_entity.crafting_categories = { constants.half_size_recipe_category, }
 trainfactory_half_entity.fluid_boxes[1].pipe_connections = { { type = "output", position = { 0, -1.5 } } }
 
 trainfactory_half_entity.animation = {

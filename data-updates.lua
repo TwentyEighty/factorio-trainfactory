@@ -68,6 +68,7 @@ for _, recipe in pairs(data.raw["recipe"]) do
         if recipe_makes_item(recipe, full_size_item.name) then
             recipe.category = constants.full_size_recipe_category
             recipe.hide_from_player_crafting = true
+            recipe.energy_required = constants.energy_required
             local new_recipe = flib_table.deep_merge{recipe, {
                 type = "recipe",
                 name = string.format("%s-disassemble", recipe.name),
@@ -88,6 +89,7 @@ for _, recipe in pairs(data.raw["recipe"]) do
         if recipe_makes_item(recipe, half_size_item.name) then
             recipe.category = constants.half_size_recipe_category
             recipe.hide_from_player_crafting = true
+            recipe.energy_required = constants.energy_required
             local new_recipe = flib_table.deep_merge{recipe, {
                 type = "recipe",
                 name = string.format("%s-disassemble", recipe.name),
