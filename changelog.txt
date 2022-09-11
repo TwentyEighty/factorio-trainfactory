@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.8
+Date: 2022-09-11
+  Changes:
+    - Reduce efficiency of disassembly recipes
+    - Don't hide train recipes from player crafting
+  Bugfixes:
+    - Fix localization of disassembly recipes
+---------------------------------------------------------------------------------------------------
 Version: 0.0.7
-Date: 2022-08-27
+Date: 2022-09-11
   Changes:
     - Remove flying text for disassembler being blocked
     - Change crafting category for factories to "crafting" so it can be handcrafted

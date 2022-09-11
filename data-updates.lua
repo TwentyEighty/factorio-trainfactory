@@ -67,16 +67,28 @@ for _, recipe in pairs(data.raw["recipe"]) do
     for _, full_size_item in pairs(items_resulting_in_full_size_entities) do
         if recipe_makes_item(recipe, full_size_item.name) then
             recipe.category = constants.full_size_recipe_category
-            recipe.hide_from_player_crafting = true
             recipe.energy_required = constants.energy_required
             local new_recipe = flib_table.deep_merge{recipe, {
                 type = "recipe",
                 name = string.format("%s-disassemble", recipe.name),
                 category = constants.full_size_disassemble_recipe_category,
+                localised_name = {"recipe-name.disassembly", {string.format("entity-name.%s", full_size_item.name)}}
             }}
             new_recipe.ingredients = normalize_recipe_result(recipe)
             new_recipe.result = nil
-            new_recipe.results = recipe.ingredients
+            new_recipe.results = {}
+            for _, result in pairs(recipe.ingredients) do
+                local name = result.name or result[1]
+                local type = result.type or "item"
+                local amount = result.amount or result[2] or 1
+                table.insert(new_recipe.results,
+                    {
+                        name = name,
+                        type = type,
+                        amount = math.ceil(amount * constants.disassembly_efficiency)
+                    }
+                )
+            end
             new_recipe.icons = flib_data.create_icons(full_size_item.item)
             if not new_recipe.subgroup then new_recipe.subgroup = full_size_item.item.subgroup end
             table.insert(new_recipes, new_recipe)
@@ -88,16 +100,28 @@ for _, recipe in pairs(data.raw["recipe"]) do
     for _, half_size_item in pairs(items_resulting_in_half_size_entities) do
         if recipe_makes_item(recipe, half_size_item.name) then
             recipe.category = constants.half_size_recipe_category
-            recipe.hide_from_player_crafting = true
             recipe.energy_required = constants.energy_required
             local new_recipe = flib_table.deep_merge{recipe, {
                 type = "recipe",
                 name = string.format("%s-disassemble", recipe.name),
                 category = constants.half_size_disassemble_recipe_category,
+                localised_name = {"recipe-name.disassembly", {string.format("entity-name.%s", half_size_item.name)}}
             }}
             new_recipe.ingredients = normalize_recipe_result(recipe)
             new_recipe.result = nil
-            new_recipe.results = recipe.ingredients
+            new_recipe.results = {}
+            for _, result in pairs(recipe.ingredients) do
+                local name = result.name or result[1]
+                local type = result.type or "item"
+                local amount = result.amount or result[2] or 1
+                table.insert(new_recipe.results,
+                    {
+                        name = name,
+                        type = type,
+                        amount = math.ceil(amount * constants.disassembly_efficiency)
+                    }
+                )
+            end
             new_recipe.icons = flib_data.create_icons(half_size_item.item)
             if not new_recipe.subgroup then new_recipe.subgroup = half_size_item.item.subgroup end
             table.insert(new_recipes, new_recipe)
